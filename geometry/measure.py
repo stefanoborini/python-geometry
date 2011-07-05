@@ -22,8 +22,12 @@ def angle(*args):
                 ) 
 
 def distance(entity_1, entity_2):
-    if isinstance(entity_1, geometry.Point3D) and isinstance(entity_2, geometry.Point3D):
-        return _Gohlke_transformations.norm(entity_2.coordinates()-entity_1.coordinates())
+    if isinstance(entity_1, entities.Point3D) and isinstance(entity_2, entities.Point3D):
+        return BoundVector3D(entity_2, entity_1).norm
+    elif isinstance(entity_1, entities.Point3D) and isinstance(entity_2, entities.Line3D):
+        return _distance_point_to_line(entity_1, entity_2)
+    elif isinstance(entity_1, entities.Line3D) and isinstance(entity_2, entities.Point3D):
+        return _distance_point_to_line(entity_2, entity_1)
     else:
         raise TypeError("Unrecognized types")
 

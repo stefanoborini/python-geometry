@@ -24,3 +24,13 @@ def rotate(entity, axis, angle):
 
     raise TypeError("Unrecognized type") 
 
+def mirror(entity, plane):
+    pass
+
+def translate(entity, vector):
+    pass
+
+
+def project(entity1, entity2):
+    pass
+

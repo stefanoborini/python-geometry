@@ -8,7 +8,7 @@ setup(
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine
     install_requires = ['numpy>=1.5'],
-    test_suite = "test.test_all",
+    test_suite = "test.run",
     package_data = {
     },
 
