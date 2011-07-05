@@ -17,9 +17,12 @@ class TestVector3D(unittest.TestCase):
         self.assertAlmostEqual(v[1], 2.0)
         self.assertAlmostEqual(v[2], 3.0)
 
-        self.assertAlmostEqual(v.norm, math.sqrt(14.0))
-    def test_from_vector(self):
-        v = 
+        v = entities.Vector3D( 1.0,2.0,3.0 )
+       
+        self.assertAlmostEqual(v.x, 1.0)
+        self.assertAlmostEqual(v.y, 2.0)
+        self.assertAlmostEqual(v.z, 3.0)
+
 def alltests():
     return unittest.TestLoader().loadTestsFromTestCase(TestVector3D)
 
