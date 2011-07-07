@@ -1,36 +1,34 @@
-from .. import geometry
+from geometry import entities
 import math
-import numpy 
 
 def normalize(entity): 
     """Returns a new entity, normalized to euclidean norm == 1"""
-    if isinstance(entity, geometry.Vector3D):
+    if isinstance(entity, entities.Vector3D):
         arr = entity.components()
-        return geometry.Vector3D( (arr / math.sqrt(numpy.dot(arr, arr))))
-    elif isinstance(vector,geometry.BoundVector3D):
+        return entities.Vector3D( (arr / math.sqrt(numpy.dot(arr, arr))))
+    elif isinstance(vector,entities.BoundVector3D):
         arr_start = vector.start().coordinates()
         arr_end = vector.end().coordinates()
         arr_end-arr_start
 
 def rotate(entity, axis, angle):
-    q = geometry.Quaternion.fromVector3D(axis, angle)
+    q = entities.Quaternion.fromVector3D(axis, angle)
     m = numpy.array(q.toRotationMatrix())
     arr = numpy.array([ entity[0], entity[1], entity[2], 1.0 ])
     rotated = numpy.dot(m, arr)
-    if type(entity) == geometry.Vector3D:
-        return geometry.Vector3D( rotated )
-    elif type(entity) == geometry.Point3D:
-        return geometry.Point3D( rotated )
+    if type(entity) == entities.Vector3D:
+        return entities.Vector3D( rotated )
+    elif type(entity) == entities.Point3D:
+        return entities.Point3D( rotated )
 
     raise TypeError("Unrecognized type") 
 
 def mirror(entity, plane):
-    pass
+    raise NotImplementedError
 
 def translate(entity, vector):
-    pass
-
+    raise NotImplementedError
 
 def project(entity1, entity2):
-    pass
+    raise NotImplementedError
 
