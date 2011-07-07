@@ -1,5 +1,4 @@
 # @author Stefano Borini
-import os; import sys; script_path=sys.path[0]; sys.path.append(os.path.join(script_path, "../../../"));
 import unittest
 
 from geometry import entities
