@@ -1,7 +1,7 @@
 from geometry import entities
 import math
 
-def normalize(entity): 
+def normalized(entity): 
     """Returns a new entity, normalized to euclidean norm == 1"""
     if isinstance(entity, entities.Vector3D):
         arr = entity.components()
@@ -11,8 +11,8 @@ def normalize(entity):
         arr_end = vector.end().coordinates()
         arr_end-arr_start
 
-def rotate(entity, axis, angle):
-    q = entities.Quaternion.fromVector3D(axis, angle)
+def rotated(entity, axis, angle):
+    q = entities.Quaternion.from_vector(axis, angle)
     m = numpy.array(q.toRotationMatrix())
     arr = numpy.array([ entity[0], entity[1], entity[2], 1.0 ])
     rotated = numpy.dot(m, arr)
@@ -23,12 +23,12 @@ def rotate(entity, axis, angle):
 
     raise TypeError("Unrecognized type") 
 
-def mirror(entity, plane):
+def mirrored(entity, plane):
     raise NotImplementedError
 
-def translate(entity, vector):
+def translated(entity, vector):
     raise NotImplementedError
 
-def project(entity1, entity2):
+def projected(entity1, entity2):
     raise NotImplementedError
 
